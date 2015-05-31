@@ -23,8 +23,8 @@ def fahrenheitToCentrigrade(fahrenheit):
 
 if __name__=='__main__':
     inVal = sys.argv[1]
-    #intParam = float(inVal)
-    intParam = inVal
+    intParam = float(inVal)
+    #intParam = inVal
     try:
         fahrenheit = centrigradeToFahrenheit(intParam)
         print("Fahrenheit = ",fahrenheit)
