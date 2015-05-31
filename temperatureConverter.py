@@ -1,5 +1,28 @@
 #!/usr/bin/python3
-import sys
+import unittest
+
+class TestTemperatureConverterMethods(unittest.TestCase):
+    
+    def test_CentigradeToFahrenheit(self) :
+        self.assertAlmostEqual(centrigradeToFahrenheit(20),68.0,places=6)
+
+    def test_FahrenheitToCentigrade_Negative(self) :
+        self.assertNotAlmostEqual(fahrenheitToCentrigrade(21),68.0,places=6)
+
+    def test_FahrenheitToCentigrade_Positive(self) :
+        self.assertAlmostEqual(fahrenheitToCentrigrade(200),93.34,places=1)
+
+    def test__typeCheker_Str_Negative(self) :
+        self.assertRaises(TypeError,_typeCheker, "sudip")
+
+    def test__typeCheker_List_Negative(self) :
+        self.assertRaises(TypeError,_typeCheker, ["sudip","Johan"])
+
+    def test__typeCheker_Positive_Int(self) :
+        _typeCheker(int(20))
+
+    def test__typeCheker_Positive_Float(self) :
+        _typeCheker(float(20.0))
 
 def _typeCheker(param):
     if (type(param) == int) :
@@ -22,18 +45,6 @@ def fahrenheitToCentrigrade(fahrenheit):
     return Tc
 
 if __name__=='__main__':
-    inVal = sys.argv[1]
-    intParam = float(inVal)
-    #intParam = inVal
-    try:
-        fahrenheit = centrigradeToFahrenheit(intParam)
-        print("Fahrenheit = ",fahrenheit)
-        centrigrade=fahrenheitToCentrigrade(fahrenheit)
-        print("centrigrade = ",centrigrade)
-    except TypeError as err:
-        #print("err= ", err)
-        print("Type given is = ", str(err) + " but accepted types are int and float !")
-        quit()
-    
+    unittest.main()
     
 
